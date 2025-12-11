@@ -23,16 +23,16 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('jwt');
     const userData = localStorage.getItem('userData');
     const savedTheme = localStorage.getItem('app-theme') || 'light';
-    
+
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
-    
+
     if (token && userData) {
       try {
         const parsedUser = JSON.parse(userData);
         setUser(parsedUser);
         setIsAuthenticated(true);
-        
+
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       } catch (error) {
         console.error('Error parsing user data:', error);
