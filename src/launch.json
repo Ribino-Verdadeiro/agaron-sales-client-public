@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch .NET Core & React",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net6.0/YourProjectName.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "debugWithChrome",
+        "pattern": "Now listening on: https://localhost:([0-9]+)",
+        "uriFormat": "https://localhost:%s"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    {
+      "name": "Debug React Client",
+      "type": "chrome",
+      "request": "launch",
+      "url": "https://localhost:44433",
+      "webRoot": "${workspaceFolder}/ClientApp/src",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    },
+    {
+      "name": "Attach to .NET Core",
+      "type": "coreclr",
+      "request": "attach",
+      "processName": "YourProjectName"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack Debug",
+      "configurations": ["Launch .NET Core & React", "Debug React Client"]
+    }
+  ]
+}
