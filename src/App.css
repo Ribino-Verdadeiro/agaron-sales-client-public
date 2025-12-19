@@ -223,9 +223,7 @@ body {
 
 .auth-content {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
 .table-content {
@@ -648,7 +646,7 @@ body {
 .proposal-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #800000, #e53e3e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -670,7 +668,7 @@ body {
   padding: 32px;
   border-radius: 16px;
   box-shadow: var(--shadow);
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #800000;
   transition: all 0.3s ease;
 }
 
@@ -689,7 +687,7 @@ body {
 .section-icon {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #800000, #e53e3e);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -755,8 +753,8 @@ body {
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #800000;
+  box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .form-group input:focus,
@@ -1055,8 +1053,9 @@ body {
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
-    border-color: #667eea;
+    border-color: #800000;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
   }
 
   /* Price display mobile optimization */
@@ -1617,16 +1616,10 @@ body {
   min-height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   background: radial-gradient(circle at center, #4a0000 0%, #1a0000 100%);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  overflow-y: auto;
+  overflow-y: visible;
   overflow-x: hidden;
-  padding: 20px;
+  padding: 60px 20px;
 }
 
 .login-container::before {
@@ -1658,6 +1651,7 @@ body {
   position: relative;
   z-index: 10;
   color: #fff;
+  margin: auto;
 }
 
 .login-logo {
@@ -2215,22 +2209,90 @@ body {
 
 .form-group label {
   font-weight: 600;
-  margin-bottom: 6px;
-  color: #333;
+  margin-bottom: 8px;
+  color: #4a5568;
+  /* Slate color for a more professional look */
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.form-group input {
-  padding: 12px;
-  border: 2px solid #e1e5e9;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.2s ease;
+.form-group label .required {
+  color: #e53e3e;
+  /* Crimson red for required fields */
+  font-weight: bold;
 }
 
-.form-group input:focus {
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #f8fafc;
+  color: #2d3748;
+  width: 100%;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: #cbd5e0;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  border-color: #800000;
+  /* Matching brand primary color */
+  box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
+  background: white;
+}
+
+/* Dark Theme Adjustments */
+[data-theme="dark"] .modal-content {
+  background: #1e1e1e;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .modal-header {
+  background: #2d2d2d;
+  border-bottom: 1px solid #3d3d3d;
+}
+
+[data-theme="dark"] .modal-header h2 {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .form-group label {
+  color: #cbd5e0;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+  background: #2d2d2d;
+  border-color: #3d3d3d;
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .form-group input:hover,
+[data-theme="dark"] .form-group select:hover,
+[data-theme="dark"] .form-group textarea:hover {
+  border-color: #4d4d4d;
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus {
+  background: #333;
+  border-color: #b71c1c;
+  box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.2);
 }
 
 .form-group.full-width {
@@ -2723,7 +2785,7 @@ body {
 }
 
 .user-role-badge {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #800000, #e53e3e);
   color: white;
   padding: 6px 12px;
   border-radius: 20px;
@@ -2771,19 +2833,19 @@ body {
 }
 
 .nav-link:hover {
-  color: #667eea;
+  color: #e53e3e;
   background: var(--card-bg);
   transform: translateY(-1px);
 }
 
 .nav-link.active {
   color: white;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, #800000, #e53e3e);
+  box-shadow: 0 4px 12px rgba(128, 0, 0, 0.3);
 }
 
 .nav-link.active:hover {
-  background: linear-gradient(135deg, #5a6fd8, #6a4190);
+  background: linear-gradient(135deg, #a00000, #600000);
 }
 
 .nav-icon {
@@ -2822,9 +2884,9 @@ body {
 
 .theme-toggle:hover {
   background: var(--card-bg);
-  border-color: #667eea;
+  border-color: #800000;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  box-shadow: 0 4px 12px rgba(128, 0, 0, 0.2);
 }
 
 .theme-icon {
@@ -2850,7 +2912,7 @@ body {
 .user-avatar {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #800000, #e53e3e);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -4005,25 +4067,27 @@ body {
   /* Admin Badge inside Mobile Menu */
   .user-role-badge {
     padding: 16px;
-    background: var(--bg-primary);
+    background: linear-gradient(135deg, #800000, #e53e3e);
     border-radius: 8px;
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 8px;
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(128, 0, 0, 0.2);
   }
 
   [data-theme="dark"] .user-role-badge {
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, #800000, #e53e3e);
     color: #fff;
     border: none;
+    box-shadow: 0 4px 12px rgba(128, 0, 0, 0.4);
   }
 
   /* Mobile Menu Action Buttons */
   .mobile-menu-actions {
-    margin-top: auto;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -4138,11 +4202,14 @@ body {
   }
 }
 
-/* Custom styles for Proposal Form */
+/* Custom styles for Proposal Form - Consolidated with brand identity */
 .proposal-header h1 {
-  color: #dc3545 !important;
+  background: linear-gradient(135deg, #800000, #e53e3e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .form-section {
-  border-left: 4px solid #dc3545 !important;
+  border-left: 4px solid #800000;
 }

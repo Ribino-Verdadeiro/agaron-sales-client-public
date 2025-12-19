@@ -55,6 +55,32 @@ export const AuthProvider = ({ children }) => {
   }, [theme]);
 
   const login = async (username, password) => {
+    // --- Mock Login Logic (Intercept demo accounts) ---
+    const mockUsers = {
+      'admin': { id: 1, username: 'admin', name: 'Admin Demo', role: 'Admin' },
+      'manager': { id: 2, username: 'manager', name: 'Manager Demo', role: 'Manager' },
+      'salesuser': { id: 3, username: 'salesuser', name: 'Sales Demo', role: 'Sales' }
+    };
+
+    const isDemoPassword = password === 'admin123' || password === 'manager123' || password === 'sales123' || password === 'admin' || password === 'manager' || password === 'salesuser';
+
+    if (mockUsers[username] && isDemoPassword) {
+      console.log('Using mock login for', username);
+      const userData = mockUsers[username];
+      const token = 'mock-jwt-token-' + Math.random().toString(36).substring(7);
+      
+      localStorage.setItem('jwt', token);
+      localStorage.setItem('userData', JSON.stringify(userData));
+      
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      
+      setUser(userData);
+      setIsAuthenticated(true);
+      
+      return { success: true, user: userData };
+    }
+    // ---------------------------------------------------
+
     try {
       const response = await api.post('/auth/login', { username, password });
       const { token, user: userData } = response.data;

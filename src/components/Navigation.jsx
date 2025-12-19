@@ -57,7 +57,7 @@ const Navigation = () => {
           <span className={`hamburger-line ${isMobileMenuOpen ? 'line-3' : ''}`}></span>
         </button>
 
-        <nav className={`main-nav ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+        <nav className={`main-nav ${isMobileMenuOpen ? 'mobile-open' : ''}`} id="sidebar-nav">
           <div className="nav-links-container">
             {navItems.map((item) =>
               item.show && (
@@ -107,6 +107,7 @@ const Navigation = () => {
           <button
             onClick={toggleTheme}
             className="theme-toggle"
+            id="theme-toggle"
             title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
           >
             <span className="theme-icon">
@@ -117,7 +118,7 @@ const Navigation = () => {
             </span>
           </button>
 
-          <div className="user-profile">
+          <div className="user-profile" id="user-profile">
             <div className="user-avatar">
               <span className="avatar-icon">
                 {user?.firstName?.[0]}{user?.lastName?.[0]}

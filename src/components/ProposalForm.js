@@ -465,8 +465,8 @@ const ProposalForm = () => {
           )}
         </div>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="proposal-form">
-        <div className="form-section">
+      <form onSubmit={handleSubmit(onSubmit)} className="proposal-form" id="proposal-form">
+        <div className="form-section" id="section-client-info">
           <div className="section-header">
             <div className="section-icon">📋</div>
             <h3>Informação Cliente</h3>
@@ -610,7 +610,7 @@ const ProposalForm = () => {
           </div>
         </div>
 
-        <div className="form-section">
+        <div className="form-section" id="section-resources">
           <div className="section-header">
             <div className="section-icon">🛠️</div>
             <h3>Recursos e Serviços</h3>
@@ -713,7 +713,7 @@ const ProposalForm = () => {
           </div>
         </div>
 
-        <div className="form-section">
+        <div className="form-section" id="section-status">
           <div className="section-header">
             <div className="section-icon">📊</div>
             <h3>Status e Acompanhamento</h3>
@@ -772,7 +772,7 @@ const ProposalForm = () => {
           </div>
         </div>
 
-        <div className="calculator-section">
+        <div className="calculator-section" id="section-price-summary">
           <div className="section-header">
             <div className="section-icon">💰</div>
             <h3>Resumo de preço</h3>
@@ -838,7 +838,7 @@ const ProposalForm = () => {
             >
               Cancelar
             </button>
-            <button type="submit" className="btn-primary" disabled={loading}>
+            <button type="submit" className="btn-primary" id="btn-submit-proposal" disabled={loading}>
               {loading ? (isEditMode ? 'Atualizando...' : 'Criando...') : (isEditMode ? 'Atualizar Proposta' : 'Criar Proposta')}
             </button>
           </div>
