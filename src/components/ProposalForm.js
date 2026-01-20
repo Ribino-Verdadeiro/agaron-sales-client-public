@@ -509,7 +509,7 @@ const ProposalForm = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="numBoxes">Número Caixas</label>
+              <label htmlFor="numBoxes">Outras Caixas</label>
               <input
                 id="numBoxes"
                 type="number"

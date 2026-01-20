@@ -146,42 +146,6 @@ const Login = () => {
           )}
         </form>
 
-        <div className="demo-login-section">
-          <h3>Demo Accounts</h3>
-          <div className="demo-buttons">
-            <button
-              type="button"
-              className="btn-demo"
-              onClick={() => handleDemoLogin('Admin')}
-              disabled={isLoading}
-            >
-              <span className="icon-left"><AdminIcon /></span>
-              ADMIN DEMO
-              <span className="icon-right"><ChatIcon /></span>
-            </button>
-            <button
-              type="button"
-              className="btn-demo"
-              onClick={() => handleDemoLogin('Manager')}
-              disabled={isLoading}
-            >
-              <span className="icon-left"><ManagerIcon /></span>
-              MANAGER DEMO
-              <span className="icon-right"><SettingsIcon /></span>
-            </button>
-            <button
-              type="button"
-              className="btn-demo"
-              onClick={() => handleDemoLogin('Sales')}
-              disabled={isLoading}
-            >
-              <span className="icon-left"><SalesIcon /></span>
-              SALES DEMO
-              <span className="icon-right"><SalesIcon /></span>
-            </button>
-          </div>
-        </div>
-
         <div className="login-footer">
 
           <span>Powered by Agaron Solutions & Technology</span>
