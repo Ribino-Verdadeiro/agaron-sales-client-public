@@ -13,21 +13,35 @@ const ProductTour = () => {
     const getSteps = useCallback((type) => {
         switch (type) {
             case 'quick':
+                // Detecta se está em mobile (viewport < 768px)
+                const isMobile = window.innerWidth < 768;
+
                 return [
                     {
                         element: '#sidebar-nav',
                         popover: {
                             title: 'Menu de Navegação',
                             description: 'Aqui você acessa as principais áreas do sistema: Propostas, Clientes e Produtos.',
-                            position: 'right'
+                            position: isMobile ? 'bottom' : 'right'
+                        },
+                        onHighlightStarted: () => {
+                            if (isMobile) {
+                                const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+                                const sidebarNav = document.getElementById('sidebar-nav');
+                                // Se o menu não estiver aberto, abre ele
+                                if (mobileMenuToggle && sidebarNav && !sidebarNav.classList.contains('mobile-open')) {
+                                    mobileMenuToggle.click();
+                                }
+                            }
                         }
                     },
                     {
-                        element: '#theme-toggle',
+                        // No mobile, usa o botão de tema dentro do menu; no desktop, usa o da navbar
+                        element: isMobile ? '#mobile-theme-toggle' : '#theme-toggle',
                         popover: {
                             title: 'Modo Claro/Escuro',
                             description: 'Prefere um visual diferente? Alterne entre o modo claro e escuro a qualquer momento aqui.',
-                            position: 'bottom'
+                            position: isMobile ? 'top' : 'bottom'
                         }
                     },
                     {
@@ -36,6 +50,16 @@ const ProductTour = () => {
                             title: 'Área de Trabalho',
                             description: 'Onde a mágica acontece! Visualize e gerencie seus dados nesta área.',
                             position: 'top'
+                        },
+                        onHighlightStarted: () => {
+                            // Fecha o menu mobile antes de mostrar a área de trabalho
+                            if (isMobile) {
+                                const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+                                const sidebarNav = document.getElementById('sidebar-nav');
+                                if (mobileMenuToggle && sidebarNav && sidebarNav.classList.contains('mobile-open')) {
+                                    mobileMenuToggle.click();
+                                }
+                            }
                         }
                     }
                 ];

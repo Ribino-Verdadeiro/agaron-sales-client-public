@@ -49,6 +49,7 @@ const Navigation = () => {
 
         <button
           className="mobile-menu-toggle"
+          id="mobile-menu-toggle"
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
@@ -82,6 +83,7 @@ const Navigation = () => {
             <button
               onClick={() => { toggleTheme(); closeMobileMenu(); }}
               className="mobile-menu-btn"
+              id="mobile-theme-toggle"
             >
               <span className="theme-icon">
                 {theme === 'light' ? '🌙' : '☀️'}
