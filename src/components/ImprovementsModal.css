@@ -1,0 +1,199 @@
+.improvements-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+.improvements-modal-content {
+    background: var(--card-bg, #fff);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+    animation: slideUp 0.3s ease-out;
+    border: 1px solid var(--border-color, #e2e8f0);
+}
+
+.improvements-modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.improvements-modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-primary, #2d3748);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.improvements-modal-header h2 .icon {
+    font-size: 1.8rem;
+}
+
+.btn-close-modal {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-muted, #718096);
+    padding: 4px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-close-modal:hover {
+    background-color: var(--bg-secondary, #f7fafc);
+    color: var(--text-primary, #2d3748);
+}
+
+.improvements-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.update-item {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+}
+
+.update-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.update-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.update-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary, #2d3748);
+}
+
+.update-date {
+    font-size: 0.85rem;
+    color: var(--text-muted, #718096);
+    background: var(--bg-secondary, #f7fafc);
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.update-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.update-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: var(--text-secondary, #4a5568);
+}
+
+.update-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #48bb78;
+    font-weight: bold;
+}
+
+.improvements-modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color, #e2e8f0);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-primary-modal {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary-modal:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+.btn-secondary-modal {
+    background: transparent;
+    color: var(--text-muted, #718096);
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 12px;
+}
+
+.btn-secondary-modal:hover {
+    background: var(--bg-secondary, #f7fafc);
+    color: var(--text-primary, #2d3748);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Dark mode overrides if needed based on typical variable usage */
+[data-theme="dark"] .improvements-modal-content {
+    background: #1e1e1e;
+    border-color: #333;
+}

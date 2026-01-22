@@ -494,6 +494,7 @@ const ProposalForm = () => {
                 id="numAgents"
                 type="number"
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
                 {...register('numAgents')}
               />
               <div className="price-display">
@@ -514,6 +515,7 @@ const ProposalForm = () => {
                 id="numBoxes"
                 type="number"
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
                 {...register('numBoxes')}
               />
               <div className="price-display">
@@ -534,6 +536,7 @@ const ProposalForm = () => {
                 id="numWhatsApp"
                 type="number"
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
                 {...register('numWhatsApp')}
               />
               <div className="price-display">
@@ -554,6 +557,7 @@ const ProposalForm = () => {
                 id="numInstagram"
                 type="number"
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
                 {...register('numInstagram')}
               />
               <div className="price-display">
@@ -574,6 +578,7 @@ const ProposalForm = () => {
                 id="numEmail"
                 type="number"
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
                 {...register('numEmail')}
               />
               <div className="price-display">
@@ -594,6 +599,7 @@ const ProposalForm = () => {
                 id="numSms"
                 type="number"
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
                 {...register('numSms')}
               />
               <div className="price-display">
@@ -622,6 +628,7 @@ const ProposalForm = () => {
                 id="hoursImplantation"
                 type="number"
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
                 {...register('hoursImplantation')}
               />
               <div className="price-display">
@@ -643,6 +650,7 @@ const ProposalForm = () => {
                 type="number"
                 step="0.01"
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
                 {...register('tokensIA')}
               />
               <div className="price-display">
@@ -664,6 +672,7 @@ const ProposalForm = () => {
                 type="number"
                 step="0.01"
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
                 {...register('storageGB')}
               />
               <div className="price-display">
@@ -706,6 +715,7 @@ const ProposalForm = () => {
                 min="1"
                 max="31"
                 placeholder="Ex: 15"
+                onWheel={(e) => e.target.blur()}
                 {...register('dueDate')}
               />
               {errors.dueDate && <span className="error">{errors.dueDate.message}</span>}
@@ -792,6 +802,7 @@ const ProposalForm = () => {
                   placeholder="0"
                   min="0"
                   max="100"
+                  onWheel={(e) => e.target.blur()}
                   {...register('discountApplied')}
                   className="discount-input"
                 />

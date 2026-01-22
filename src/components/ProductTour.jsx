@@ -3,11 +3,35 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { driver } from 'driver.js';
 import 'driver.js/dist/driver.css';
 import './ProductTour.css';
+import ImprovementsModal from './ImprovementsModal';
+
+console.log('ImprovementsModal import:', ImprovementsModal);
 
 const ProductTour = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [showImprovements, setShowImprovements] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
+
+    // Versão atual das melhorias para controle de exibição
+    const CURRENT_IMPROVEMENTS_VERSION = 'v1_improvements_jan2026';
+
+    useEffect(() => {
+        // Verifica se o usuário já marcou para não ver mais
+        const hasSeen = localStorage.getItem(CURRENT_IMPROVEMENTS_VERSION);
+        if (!hasSeen) {
+            // Pequeno delay para não ser invasivo logo no carregamento
+            const timer = setTimeout(() => {
+                setShowImprovements(true);
+            }, 1500);
+            return () => clearTimeout(timer);
+        }
+    }, []);
+
+    const handleDontShowAgain = () => {
+        localStorage.setItem(CURRENT_IMPROVEMENTS_VERSION, 'true');
+        setShowImprovements(false);
+    };
 
     // Função para retornar os passos baseados no tipo e contexto
     const getSteps = useCallback((type) => {
@@ -306,9 +330,26 @@ const ProductTour = () => {
                                 Nenhum tutorial específico para esta página ainda.
                             </div>
                         )}
+
+                        <button onClick={() => {
+                            setIsOpen(false);
+                            setShowImprovements(true);
+                        }} className="tour-option">
+                            <span className="option-icon">✨</span>
+                            <div className="option-text">
+                                <span className="option-title">Melhorias</span>
+                                <span className="option-desc">Novidades da versão</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             )}
+
+            <ImprovementsModal
+                isOpen={showImprovements}
+                onClose={() => setShowImprovements(false)}
+                onDontShowAgain={handleDontShowAgain}
+            />
         </div>
     );
 };
